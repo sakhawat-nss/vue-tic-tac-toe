@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <main>
-    <H1>This is the Home page</H1>
-  </main>
+  <div>
+    <h1>This is the game page</h1>
+  </div>
 </template>
 
 <style scoped>

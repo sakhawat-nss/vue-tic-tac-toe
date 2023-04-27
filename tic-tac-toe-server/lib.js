@@ -79,4 +79,14 @@ function checkWinningPlayer(game) {
     return "-";
 }
 
-module.exports = { normalizeGameData, isValidMove, checkWinningPlayer };
+function createGameStateForPlayer(player, game) {
+    const gameState = {};
+    const playerSign = (player === game.player1? "X": (player === game.player2? "O": "-"));
+    gameState.game = normalizeGameData(game);
+    gameState.player = {
+        sign: playerSign
+    }
+    return gameState;
+}
+
+module.exports = { normalizeGameData, isValidMove, checkWinningPlayer, createGameStateForPlayer };

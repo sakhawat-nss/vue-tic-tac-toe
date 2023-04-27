@@ -1,15 +1,5 @@
 const gameStore = require("./gameStore");
-const { normalizeGameData, isValidMove, checkWinningPlayer } = require("./lib");
-
-function createGameStateForPlayer(player, game) {
-    const gameState = {};
-    const playerSign = (player === game.player1? "X": (player === game.player2? "O": "-"));
-    gameState.game = normalizeGameData(game);
-    gameState.player = {
-        sign: playerSign
-    }
-    return gameState;
-}
+const { isValidMove, checkWinningPlayer, createGameStateForPlayer } = require("./lib");
 
 function updateGameData(game, newData) {
     Object.keys(newData).forEach(key => game[key] = newData[key]);

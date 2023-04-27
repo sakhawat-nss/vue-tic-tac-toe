@@ -98,7 +98,7 @@ export default {
                             });
           break;
         case "rejectBack":
-          this.showAlert("Your oponent rejected the step back request. Please provide your move quickly", () => {this.dialogAlert.show = false});
+          this.showAlert("Your oponent rejected the step back request.", () => {this.dialogAlert.show = false});
           break;
         default:
           console.log(command, data);

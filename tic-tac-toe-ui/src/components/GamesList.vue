@@ -7,7 +7,6 @@ export default {
     },
     methods: {
         joinGame(game: any) {
-            // this.$router.push(`/game/${game.name}`);
             this.$router.push({
                 name: 'game',
                 params: {

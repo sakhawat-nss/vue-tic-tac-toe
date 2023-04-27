@@ -2,10 +2,6 @@
 export default {
     props: ["state", "status"],
     methods: {
-        random_rgba() {
-            var o = Math.round, r = Math.random, s = 255;
-            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
-        },
         getMovePlayerSign(row: number, col: number) {
             const boxLoc = (row - 1) * 3 + (col - 1);
             const index = this.state.indexOf(boxLoc);
@@ -24,25 +20,6 @@ export default {
     <div class="m-5">
         <v-card class="cards">
             <v-card-text class="fill-height">
-                <!-- <v-container class="fill-height">
-                    <v-row no-gutters v-for="m in 3" :key="m" :style="{ height: (100/3) + '%'}">
-                        <v-col v-for="n in 3" :key="n" :style="{ backgroundColor: random_rgba(), width: (100/3) + '%'}" class="fill-height">
-                            <div class="fill-height">
-                                row {{ m }} col {{ n }}
-                                {{ (m - 1) * 3 + (n - 1) }}
-                                {{ getMovePlayerSign(m, n) }}
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container> -->
-                <!-- <v-table class="fill-height">
-                    <tr v-for="m in 3" :key="m">
-                        <td v-for="n in 3" :key="n" class="text-center" @click="$event => $emit('move', (m - 1) * 3 + (n - 1))">
-                            {{ getMovePlayerSign(m, n) }}
-                        </td>
-                    </tr>
-                </v-table> -->
-
                 <table :class="{ pointernone: (status !== 'running')}">
                     <tr v-for="m in 3" :key="m">
                         <td v-for="n in 3" :key="n" class="cell"

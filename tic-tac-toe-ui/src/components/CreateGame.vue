@@ -1,4 +1,6 @@
 <script lang="ts">
+import { GET_LATEST_GAMES_LIST } from '../store/types';
+
 export default {
     data: function() {
         return {
@@ -19,6 +21,7 @@ export default {
             const ret = await req.json();
             console.log(ret);
             this.gameName = "";
+            (this as any).$store.dispatch(GET_LATEST_GAMES_LIST);
         }
     }
 }

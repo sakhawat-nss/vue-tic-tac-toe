@@ -1,10 +1,7 @@
 <script lang="ts">
+import { GET_LATEST_GAMES_LIST } from '../store/types';
+
 export default {
-    data() {
-        return {
-            games: [],
-        }
-    },
     methods: {
         joinGame(game: any) {
             this.$router.push({
@@ -23,10 +20,13 @@ export default {
             return "Completed"; 
         }
     },
-    mounted: async function() {
-        const res = await fetch("http://localhost:8000/games");
-        const data = await res.json();
-        this.games = data.data;
+    computed: {
+        games() {
+            return (this as any).$store.state.games;
+        }
+    },
+    mounted: function() {
+        (this as any).$store.dispatch(GET_LATEST_GAMES_LIST);
     }
 }
 </script>
@@ -50,7 +50,7 @@ export default {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="game in (games as any)" :key="game.name">
+            <tr v-for="game in (games as any[])" :key="game.name">
                 <td>{{ game.name }}</td>
                 <td>{{ gameStatus(game.status) }}</td>
                 <td >{{ playersInGame(game) }}</td>

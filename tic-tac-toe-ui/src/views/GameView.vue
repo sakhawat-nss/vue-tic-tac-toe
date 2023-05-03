@@ -81,10 +81,19 @@ export default {
           console.log(data)
           break;
         case "youWon":
+          this.game = data.game;
+          this.player = data.player;
           this.showAlert("You have won the game.", () => { this.dialogAlert.show = false });
           break;
         case "oponentWon":
+          this.game = data.game;
+          this.player = data.player;
           this.showAlert("You have failed the game.", () => { this.dialogAlert.show = false });
+          break;
+        case "draw":
+          this.game = data.game;
+          this.player = data.player;
+          this.showAlert("The game is a draw.", () => { this.dialogAlert.show = false });
           break;
         case "requestBack":
           this.showConfirm("Your oponent is requesting for one step back. Do you agree?",

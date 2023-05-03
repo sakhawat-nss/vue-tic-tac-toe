@@ -3,19 +3,8 @@ export default {
   props: ["game", "player"],
   data() {
     return {
-      countdown: 0,
       interval: 0
     };
-  },
-  updated() {
-    clearInterval(this.interval);
-    this.interval = setInterval(() => {
-      this.countdown = 10 - Math.round((Date.now() - this.game.lastActivity)/1000);
-      if(this.countdown < 0 || this.game.status === 'completed') {
-        this.countdown = 0;
-        clearInterval(this.interval);
-      }
-    }, 1000);
   },
   methods: {
     nextMove() {
@@ -39,7 +28,7 @@ export default {
     <v-card class="card">
             <v-card-text class="fill-height">
               <h2>Next move: {{ nextMove() }}</h2>
-              <h2>Next move in {{ countdown }}s</h2>
+              <h2>Next move in {{ game.remaining }}s</h2>
               <h2 v-if="game.status === 'completed'">Game end: {{ winningPlayer() }}</h2>
             </v-card-text>
         </v-card>

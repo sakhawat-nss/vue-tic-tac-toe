@@ -16,7 +16,6 @@ const store = createStore({
     async [GET_LATEST_GAMES_LIST](context) {
       const res = await fetch("http://localhost:8000/games");
       const data = await res.json();
-      this.games = data.data;
       context.commit(UPDATE_GAME_CACHE, data.data);
     }
   }

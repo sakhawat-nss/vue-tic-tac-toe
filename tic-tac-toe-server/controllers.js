@@ -1,5 +1,5 @@
-const { getAllGames, addNewGame } = require("./gameService");
-const { connectWebSocket } = require("./wsService");
+const { getAllGames, addNewGame } = require("./service/gameService");
+const { connectWebSocket } = require("./service/wsService");
 
 function success(data) {
     return {
